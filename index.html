@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="normalize.css">
+    <title>Repaso  </title>
+</head>
+<body>
+    <header>
+        <h2 class="logo">Logo</h2>
+        <nav class="navigation">
+            <a href="#">Home</a>
+            <a href="#">Services</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+            <button class="btnLogin">Login</button>
+        </nav>
+    </header>
+
+   <div class="wrapper">
+    <span class="icon-close">
+        <ion-icon name="close"></ion-icon>
+    </span>
+    <div class="form-box login">
+        <h2>Login</h2>
+        <form action="#">
+            <div class="input-box">
+                <span class="icon"><ion-icon name="lock"></ion-icon></span> 
+                <input id="email" type="email" required>
+                <label for="email">Email</label>
+            </div>
+            <div class="input-box">
+                <!-- web component code for the password icon inserted in span section -->
+                <span class="icon"><ion-icon name="lock"></ion-icon></span> 
+                <input id="password" type="password" required>
+                <label for="password">Password</label>
+            </div>
+            <div class="remember-forgot">
+                <label for="remember"><input id="remember" type="checkbox">
+                    Remember me
+                </label>
+                <a href="#">Forgot password?</a>
+            </div>
+            <button type="submit" class="btn">Login</button>
+            <div class="login-register">
+                <p>Don't have an account? <a href="#" class="register-link">Register</a></p>
+            </div>
+        </form>
+    </div>
+
+
+    <div class="form-box register">
+        <h2>Registration</h2>
+        <form action="#">
+            <div class="input-box">
+                <span class="icon"><ion-icon name="person"></ion-icon></span> 
+                <input id="user" type="user" required>
+                <label for="user">Username</label>
+            </div>
+            <div class="input-box">
+                <span class="icon"><ion-icon name="lock"></ion-icon></span> 
+                <input id="email2" type="email2" required>
+                <label for="email2">Email</label>
+            </div>
+            <div class="input-box">
+                <!-- web component code for the password icon inserted in span section -->
+                <span class="icon"><ion-icon name="lock"></ion-icon></span> 
+                <input id="password2" type="password2" required>
+                <label for="password2">Password</label>
+            </div>
+            <div class="remember-forgot">
+                <label for="agree"><input id="agree" type="checkbox">
+                  I agree terms and conditions
+                </label>
+            </div>
+            <button type="submit" class="btn">Register</button>
+            <div class="login-register">
+                <p>Already have an account? <a href="#" class="login-link">Login</a></p>
+            </div>
+        </form>
+    </div>
+    </div>
+   
+
+    <script src="script.js"></script>
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    <!-- code above for adding icons  -->
+
+</body>
+</html>

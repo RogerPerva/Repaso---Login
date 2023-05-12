@@ -1,0 +1,301 @@
+ :root{
+    --fuenteHeading: 'PT Sans', sans-serif;
+    --fuenteParrafos: 'Open Sans', sans-serif;
+    --negritas: 700;
+    --blanco: rgb(254,248,211);
+    --negro: rgb(17,44,83);
+    --negro2: #162938d2;
+    --gris: rgb(254,248,211);
+    --sol: rgb(254,248,211);
+}
+html{
+    box-sizing: border-box; /* para hacer que el border o pading no afecte el ancho de nuestros elementos*/
+    font-size: 62.5%; /*para que 1 rem sea igual a 10px*/
+
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body{
+    font-family: 'Open Sans', sans-serif;
+    display: flex; /*Contenedor flexible*/
+    justify-content: center; /*Alineamos todo al centro*/ 
+    align-items: center; /*Alineamos todo al centro*/
+    min-height: 100vh; /* 100% del tamaño*/
+    background-image: url('/fondo1.jpg'); /*Escogemos el fondo*/
+    background-size: cover; /* Ajustamos completamente al contenedor*/
+    background-repeat: no-repeat; /*Si no cabe, que no se repita*/
+}
+
+header{
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+width: 100%;
+padding: 0 10rem;
+/* background-color: transparent; Usado previamente para guiarnos*/ 
+
+display: flex;
+justify-content: space-between;
+
+font-size: 2rem;
+align-items: center;
+margin: 0;
+z-index: 99;
+}
+
+* a {
+    text-decoration: none;
+}
+
+.logo{
+    font-weight: var(--negritas);
+    font-size: 3.5rem;
+    color: #fff;
+    user-select: none; /*No puede ser seleccionado*/
+}
+
+.navigation{
+    display: flex; /*** (123) **/
+    justify-content: center; /*** (123) **/
+    align-items: center; /*** (123) **/
+   color: #fff;
+   gap: 2rem;
+}
+
+.navigation a{
+    /*padding-top: 1.5rem; Para hacer que la barra de navegacion quede centrada::: Se elimina y actualiza en comentario (123)*/ 
+    position: relative;
+    margin-left: 4rem;
+    color: #fff;
+    text-decoration: none;
+}
+
+.navigation a::after{/*Agregamos los siugientes elementos*/
+    content:''; /*Elemento vacio*/
+    position: absolute; /*Posicion absoluta, pero debe ser posicion relativa el elemento padre*/
+    left: 0;
+    bottom: -.6rem;
+    width: 100%;
+    height: .3rem;
+    background-color: var(--blanco);
+    border-radius: .5rem;
+    transform-origin: right;  /* Establece el punto de origen de la transformacion*/
+    transform: scaleX(0); /*Realiza una transformacion de escala horizontal, lo que hace es que colapsa el elemento*/
+    transition: transform .5s;
+}
+
+.navigation a:hover::after{
+    transform: scaleX(1); /*Aqui restauramos el elemento a su valor original*/
+    transform-origin: left; /*Punto de origen de la restauracion*/
+}
+
+
+
+.navigation .btnLogin{
+    width: 13rem;
+    height: 5rem;
+    background: none;
+    color: #fff;
+    border: 2px solid;
+    border-color: #fff;
+    border-radius: 1rem;
+    font-size: 2.5rem;
+    margin-left: 4rem;
+    transition: .5s;
+}
+.navigation .btnLogin:hover{
+    background-color: var(--blanco);
+    color: var(--negro);
+}
+
+.wrapper{ /*Container/Contenedor*/
+    position: relative; 
+    top: 2.5rem;
+    width: 50rem;
+    height: 100%;
+    background: transparent;
+    border: .2rem solid var(--blanco);
+    border-radius: 2rem;
+    backdrop-filter: blur(10px); /*Hacemos borroso el fondo*/
+    box-shadow: 0 0 20px rgba(0, 0, 0, .5) ;
+   
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden; /*cualquier elemento que vaya mas alla del contenido sera ocultado */
+    transform: scale(0);
+    transition: transform .4s ease, height .1s ease; /*Para hacer un agrandamiento suave*/
+}
+
+.wrapper.active{
+    height: 500px;
+    transition: .5s ease;
+}
+
+.wrapper.push{ /*Este hace que el login salga*/
+    transform: scale(1);
+    transition: .5s ease;
+}
+.wrapper .form-box{/*Formulario*/
+    width: 100%;
+    padding: 4rem;
+    font-size: 2rem;
+}
+.wrapper .form-box.login{
+    transition: .18s ease;
+    transform: translateX(0);
+}
+
+.wrapper.active .form-box.login{
+   transition: none;
+   transform: translateX(-500px); /*Movemos el login por fuera del wrapper*/
+}
+
+.wrapper .form-box.register{
+    position: absolute;
+    transform: translateX(500px);
+}
+
+.wrapper.active .form-box.register{
+    transition: .18s ease;
+    transform: translateX(0);
+}
+
+.wrapper .icon-close{
+   position: absolute;
+   top: 0;
+   right: 0;
+   width: 4.5rem;
+   height: 4.5rem;
+   background-color: var(--negro);
+   color: var(--blanco);
+   font-size: 2.5rem;
+   
+   display: flex;
+   justify-content: center;
+   align-items: center;
+
+   border-bottom-left-radius: 20px;
+   cursor: pointer;
+   z-index: 1;
+}
+
+.form-box h2{
+    text-align: center;
+    font-size: 4rem;
+    color: var(--negro);
+}
+
+.input-box{
+    position: relative;
+    width: 100%;
+    height: 5rem;
+    border-bottom: 2px solid var(--negro);
+    margin: 3rem 0;
+    
+}
+
+.input-box label{
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    color: var(--negro);
+    font-weight: 500;
+    pointer-events: none;
+    transition: .5s;
+}
+
+.input-box input:focus~label,
+.input-box input:valid~label
+{
+    top: -5px;
+}
+
+.input-box input{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 0 35px 0 5px;
+
+    }
+
+.input-box .icon{
+    position: absolute;
+    right: 1rem;
+    font-size: 1.2em;
+    color: var(--negro);
+    line-height: 57px;
+}
+
+.remember-forgot{
+    font-size: .9em;
+    color: var(--negro);
+    font-weight: 500;
+    margin-top: -15px;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.remember-forgot label input{
+    accent-color: var(--negro);  /* Cambiamos el color del checkbox*/
+    margin-right: .3rem; /*espaciado entre el 'remember me' y el checkbox*/
+}
+
+.remember-forgot a{
+    color: var(--gris);
+}
+
+.remember-forgot a:hover{
+    text-decoration: underline;
+}
+
+.btn{
+    width: 100%; /*tomamos todo el ancho disponible*/
+    height: 5rem; /*alto de 50px */
+    background-color: var(--negro); 
+    border: none;
+    border-radius: 1rem;
+    margin: 1rem 0 0 0;
+    transition: .5s;
+    outline:none;
+    cursor: pointer;
+    font-size: 1em;
+    color: var(--blanco);
+    font-weight: 500;
+}
+
+.btn:hover{
+    color: var(--blanco);
+    background-color: var(--negro2);
+}
+
+.login-register{
+    font-size: .9em;
+    color: var(--negro);
+   text-align: center;
+   font-weight: 500;
+    margin-top: 2.5rem 1rem ;
+}
+
+.login-register p a{
+    color: var(--blanco);
+    font-weight: 500;
+}
+
+.login-register p a:hover{
+    text-decoration: underline;
+}
+
